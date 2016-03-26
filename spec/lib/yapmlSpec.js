@@ -32,6 +32,28 @@ describe('YAPML', () => {
       expect(match(35)).toBe(36);
     });
   });
+
+  describe('matching a value then anything', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.value(42, () => 77).
+              on.anything(increment).
+              match;
+    });
+
+    describe('given the value', () => {
+      it('matches that value', () => {
+        expect(match(42)).toBe(77);
+      });
+    });
+
+    describe('given some other value', () => {
+      it('matches that other value', () => {
+        expect(match(35)).toBe(36);
+      });
+    });
+  });
 });
 
 function increment(n) {
