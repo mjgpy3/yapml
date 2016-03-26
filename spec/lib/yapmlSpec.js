@@ -1,5 +1,4 @@
 const on = require('../../lib/yapml.js');
-
 describe('YAPML', () => {
   describe('matching on a simple value', () => {
     var match;
@@ -137,6 +136,20 @@ describe('YAPML', () => {
       it('doesn\'t match', () => {
         expect(match({ foo: 'bar' })).toBe('other');
       });
+    });
+  });
+
+  describe('matching args as a value', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.value([1, 2], () => 42).
+              on.anything(() => 'other').
+              matchArgs;
+    });
+
+    it('treats the value like an array of values', () => {
+      expect(match(1, 2)).toBe(42);
     });
   });
 });
