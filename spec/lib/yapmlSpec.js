@@ -53,6 +53,35 @@ describe('YAPML', () => {
     });
   });
 
+  describe('matching an array by the starting values', () => {
+    var match;
+
+    beforeEach(() => {
+      match =
+        on.array.starting(1, 2, () => 42).
+        on.array.starting(7, 13, (a) => a).
+        on.anything(() => 'other').
+        match;
+    });
+
+    describe('given an array starting with the values', () => {
+      it('matches the array', () => {
+        expect(match([1, 2, 3, 4, 5])).toBe(42);
+      });
+
+      it('passes the array through to the callback', () => {
+        var arr = [7, 13, 1, 2, 9];
+        expect(match(arr)).toBe(arr);
+      });
+    });
+
+    describe('given an array starting with _almost_ the values', () => {
+      it('does not match the array', () => {
+        expect(match([1, 3, 4, 5])).toBe('other');
+      });
+    });
+  });
+
   describe('matching an object', () => {
     var match;
 
