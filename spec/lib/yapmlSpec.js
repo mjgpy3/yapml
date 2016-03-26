@@ -45,6 +45,12 @@ describe('YAPML', () => {
         expect(match([1, 2, [3], { foo: 4 }])).toBe(42);
       });
     });
+
+    describe('given string that looks like that array, stringified', () => {
+      it('does not match', () => {
+        expect(() => match(JSON.stringify([1, 2, [3], { foo: 4 }]))).toThrowError('Non-exhaustive patterns');
+      });
+    });
   });
 
   describe('matching a value then anything', () => {
