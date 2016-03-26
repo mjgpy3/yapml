@@ -1,4 +1,5 @@
 const on = require('../../lib/yapml.js');
+
 describe('YAPML', () => {
   describe('matching on a simple value', () => {
     var match;
@@ -152,8 +153,34 @@ describe('YAPML', () => {
       expect(match(1, 2)).toBe(42);
     });
   });
+
+  describe('matching a predicate', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.satisfies(isNegative, (v) => -v).
+              on.anything((n) => n).
+              match;
+    });
+
+    describe('given a value that returns true', () => {
+      it('matches', () => {
+        expect(match(-42)).toBe(42);
+      });
+
+    describe('given a value that returns false', () => {
+      it('does not match', () => {
+        expect(match(35)).toBe(35);
+      });
+    });
+    });
+  });
 });
 
 function increment(n) {
   return n + 1;
+}
+
+function isNegative(n) {
+  return n < 0;
 }
