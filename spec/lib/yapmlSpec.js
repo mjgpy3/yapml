@@ -33,6 +33,20 @@ describe('YAPML', () => {
     });
   });
 
+  describe('matching an array', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.value([1, 2, [3], { foo: 4 }], () => 42).match;
+    });
+
+    describe('given an array with the same values', () => {
+      it('matches the array', () => {
+        expect(match([1, 2, [3], { foo: 4 }])).toBe(42);
+      });
+    });
+  });
+
   describe('matching a value then anything', () => {
     var match;
 
@@ -45,6 +59,28 @@ describe('YAPML', () => {
     describe('given the value', () => {
       it('matches that value', () => {
         expect(match(42)).toBe(77);
+      });
+    });
+
+    describe('given some other value', () => {
+      it('matches that other value', () => {
+        expect(match(35)).toBe(36);
+      });
+    });
+  });
+
+  describe('matching anything then a value', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.anything(increment).
+              on.value(42, () => 77).
+              match;
+    });
+
+    describe('given the value', () => {
+      it('hits the anything result first', () => {
+        expect(match(42)).toBe(43);
       });
     });
 
