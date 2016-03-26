@@ -110,6 +110,35 @@ describe('YAPML', () => {
       });
     });
   });
+
+  describe('matching exactly some object', () => {
+    var match,
+      obj = { foo: 'bar' };
+
+    beforeEach(() => {
+      match = on.exactly(obj, () => 42).
+              on.anything(() => 'other').
+              match;
+    });
+
+    describe('given the same reference', () => {
+      it('matches', () => {
+        expect(match(obj)).toBe(42);
+      });
+    });
+
+    describe('given something else', () => {
+      it('doesn\'t match', () => {
+        expect(match('foo bar')).toBe('other');
+      });
+    });
+
+    describe('given an object that looks the same', () => {
+      it('doesn\'t match', () => {
+        expect(match({ foo: 'bar' })).toBe('other');
+      });
+    });
+  });
 });
 
 function increment(n) {
