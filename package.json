@@ -4,7 +4,7 @@
   "description": "Yet another pattern matching library",
   "main": "lib/yapml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/jasmine"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/mjgpy3/yapml/issues"
   },
-  "homepage": "https://github.com/mjgpy3/yapml#readme"
+  "homepage": "https://github.com/mjgpy3/yapml#readme",
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  }
 }
