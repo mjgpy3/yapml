@@ -53,6 +53,20 @@ describe('YAPML', () => {
     });
   });
 
+  describe('matching an object', () => {
+    var match;
+
+    beforeEach(() => {
+      match = on.value({ foo: "bar", spaz: 99 }, () => 42).match;
+    });
+
+    describe('given an object that looks the same', () => {
+      it('matches the object', () => {
+        expect(match({ foo: "bar", spaz: 99 })).toBe(42);
+      });
+    });
+  });
+
   describe('matching a value then anything', () => {
     var match;
 
