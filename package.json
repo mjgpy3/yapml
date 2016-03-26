@@ -1,0 +1,26 @@
+{
+  "name": "yapml",
+  "version": "1.0.0",
+  "description": "Yet another pattern matching library",
+  "main": "lib/yapml.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjgpy3/yapml.git"
+  },
+  "keywords": [
+    "pattern-matching",
+    "pattern",
+    "matching",
+    "functional-programming",
+    "fp"
+  ],
+  "author": "Michael Gilliland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjgpy3/yapml/issues"
+  },
+  "homepage": "https://github.com/mjgpy3/yapml#readme"
+}
