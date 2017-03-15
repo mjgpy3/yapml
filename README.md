@@ -38,3 +38,5 @@ It strives to emphasize
 
  - [fluent syntax](https://en.wikipedia.org/wiki/Fluent_interface)
  - [pointfree](https://en.wikipedia.org/wiki/Tacit_programming) style
+
+## [The code](./lib/yapml.js)
