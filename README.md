@@ -1,5 +1,5 @@
 # yapml
-Yet another pattern matching library
+Yet another pattern matching library.
 
 ## Examples
 
